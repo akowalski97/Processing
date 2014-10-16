@@ -1,0 +1,10 @@
+*.png
+*.pdf
+*.jpg
+processing.js
+web-export
+libraries
+tools
+modes
+skech.properties
+.DS_Store
