@@ -2,7 +2,7 @@ ArrayList<Robot> robots;
 int numberOfRobots = 12;
 
 void setup() {
-  size(400, 300);
+  size(800, 600);
   robots = new ArrayList<Robot>();
   float scale = 0.6;
   for (int i = 0; i < numberOfRobots; ++i) {
