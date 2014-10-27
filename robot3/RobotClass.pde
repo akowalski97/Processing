@@ -3,7 +3,7 @@ class Robot {
   float y = 0;//location of robot
   float scale = 1; //size of robot
   int robotColor;
-  
+
   Robot(int robotColor_, float scale_) {
     robotColor = robotColor_;
     scale = scale_;
@@ -38,7 +38,15 @@ class Robot {
     float headHeight = 30 * scale;
     float yTopOfHead = yTopOfNeck - headHeight;
     rect(-headWidth/2, yTopOfHead, headWidth, headHeight);
+
+    //draw eyes of robot
+   
+    float eyeRadius = 23 * scale;
+    float yTopOfEye = yTopOfHead+15 * scale;
+    ellipse(-eyeRadius * 1.5, yTopOfEye, eyeRadius, eyeRadius);
+    ellipse(eyeRadius * 1.5, yTopOfEye, eyeRadius, eyeRadius);
     popMatrix();
+
   }
 
   void easeTowards(float targetX, float targetY, float easing) {
@@ -53,3 +61,4 @@ class Robot {
     }
   }
 }
+
