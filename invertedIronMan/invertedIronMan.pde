@@ -7,17 +7,20 @@ void setup() {
 }
 
 void draw() {
-  image(img, 0, 0);
-  loadPixels();
-  invertColors();
-  updatePixels();
-  println(frameCount);
+  if (frameCount <= 400) {
+    image(img, 0, 0);
+    loadPixels();
+    invertColors();
+    updatePixels();
+    println(frameCount);
+    saveFrame("line-######.png");
+  }
 } 
 
 void invertColors() {
   int i = 0;
   for (int pxl : pixels) {
-    int pxlMultiplier = frameCount;
+    int pxlMultiplier = frameCount+1000;
     pixels[i++] = (pxl * (pxlMultiplier * -1/1000))+frameCount;
   }
 }
