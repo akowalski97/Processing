@@ -7,7 +7,7 @@ void setup() {
 }
 
 void draw() {
-  if (frameCount <= 400) {
+  if (frameCount <= 30) {
     image(img, 0, 0);
     loadPixels();
     invertColors();
