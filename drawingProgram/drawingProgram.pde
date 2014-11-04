@@ -1,14 +1,20 @@
 boolean mouseIsBeingDragged = false;
 PImage img;
+int colorWheelWidth;
+int colorWheelHeight;
+int selectedColor = color(255);
+int wheelInset = 10;
 
 void setup() {
-  img = loadImage("documents/color_wheel_730.png");
+  img = loadImage("color_wheel_730.png");
   size (1000, 1000);
   background(255);
+  colorWheelWidth = width/5;
+  colorWheelHeight = height/5;
 }
 
 void draw () {
-  image(img, 10, 10, width/5, height/5);
+  image(img, wheelInset, wheelInset, colorWheelWidth, colorWheelHeight);
   if (mouseIsBeingDragged) {
     line(pmouseX, pmouseY, mouseX, mouseY);
   }
@@ -17,11 +23,25 @@ void draw () {
   println("red="+red(pxl)+ "+ green="+ green(pxl)+ "+ blue"+ blue(pxl));
 }
 
-void mouseDragged() {
-  mouseIsBeingDragged = true;
+void mouseClicked() {
+  if (mouseInColorWheel() ) {
+    loadPixels();
+    selectedColor = pixels[width * mouseY + mouseX];
+  }
+  fill(selectedColor);
+  float radiusColorSwatch = 15;
+  float diameterColorSwatch = radiusColorSwatch * 2;
+  ellipse(radiusColorSwatch, radiusColorSwatch, diameterColorSwatch, diameterColorSwatch);
 }
 
-void mouseMoved() {
-  mouseIsBeingDragged = false;
+boolean mouseInColorWheel() {
+  return (mouseX < wheelInset + colorWheelWidth && mouseY < wheelInset + colorWheelHeight);
 }
+  void mouseDragged() {
+    mouseIsBeingDragged = true;
+  }
+
+  void mouseMoved() {
+    mouseIsBeingDragged = false;
+  }
 
