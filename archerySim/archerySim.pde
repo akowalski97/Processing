@@ -18,9 +18,6 @@ void draw() {
 
 void mousePressed() {
   if (!arrow.isReleased) {
-    arrow.isReleased = true;
+    arrow.shoot();
   } 
-  else {
-    arrow.isReleased = false;
-  }
 }
