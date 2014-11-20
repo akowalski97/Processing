@@ -12,14 +12,14 @@ class Bow {
     arc(0, 0, 200, 150, 0, PI, OPEN);
     popMatrix();
   }
-  
+
   float rotationAngle() {
     float pointToX = mouseX-width/2;
     float pointToY = mouseY-height/2;
     if (pointToX == 0) {
       return ( pointToY < 0 )? PI: -PI;
     }
-    float rotationAngleInRadians = atan( pointToY / pointToX  ) ;
+    float rotationAngleInRadians = atan( pointToY / pointToX  );
     if (pointToX < 0)
       rotationAngleInRadians += PI;
     return rotationAngleInRadians;

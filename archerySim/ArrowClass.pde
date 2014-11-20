@@ -5,6 +5,9 @@ class Arrow {
   float vy = 0.1;
   boolean isReleased = false;
   float angle;
+  float variableM = 2.5;
+  float arrowSpeedMultiplier = variableM*20;
+  float gravityDelta = variableM*0.5;
 
   void draw() {
     fill(255);
@@ -14,6 +17,7 @@ class Arrow {
     if (isReleased) {
       x = x+vx;
       y = y+vy;
+      vy = vy-gravityDelta;
     }
     rotate(PI/2+rotationAngle( ));
 
@@ -49,10 +53,15 @@ class Arrow {
 
 
   float rotationAngle() {
-    if (isReleased)
-      return (angle);
-    float pointToX = mouseX-width/2;
-    float pointToY = mouseY-height/2;
+    float pointToX, pointToY;
+    if (isReleased) {
+      pointToX = vx;
+      pointToY = -vy;
+    } 
+    else {
+      pointToX = mouseX-width/2;
+      pointToY = mouseY-height/2;
+    }
     if (pointToX == 0) {
       return ( pointToY < 0 )? PI: -PI;
     }
@@ -67,7 +76,6 @@ class Arrow {
     float pointToX = mouseX-width/2;
     float pointToY = mouseY-height/2;
     float distanceToMouse = dist(0, 0, pointToX, pointToY);
-    float arrowSpeedMultiplier = 25;
     vx =  (pointToX/distanceToMouse) * arrowSpeedMultiplier;
     vy =  (-pointToY/distanceToMouse) * arrowSpeedMultiplier;
   }
