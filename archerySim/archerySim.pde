@@ -3,7 +3,7 @@ Bow bow;
 
 void setup() {
   background (0);
-  size (2000, 680);
+  size (2000, 800);
   arrow = new Arrow();
   bow = new Bow();
 }
@@ -21,3 +21,4 @@ void mousePressed() {
     arrow.shoot();
   } 
 }
+

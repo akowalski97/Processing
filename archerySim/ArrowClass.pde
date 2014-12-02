@@ -5,9 +5,8 @@ class Arrow {
   float vy = 0.1;
   boolean isReleased = false;
   float angle;
-  float variableM = 2.5;
-  float arrowSpeedMultiplier = variableM*20;
-  float gravityDelta = variableM*0.5;
+  float arrowSpeedMultiplier = 2.5 * 20;
+  float gravityDelta = 1.5;
 
   void draw() {
     fill(255);
@@ -18,6 +17,14 @@ class Arrow {
       x = x+vx;
       y = y+vy;
       vy = vy-gravityDelta;
+      if ((abs(x)>width*2)||(abs(y)>width*2)) {
+        //arrow is off screen
+        x=0;
+        vx=0;
+        y=0;
+        vy=0;
+        isReleased = false;
+      }
     }
     rotate(PI/2+rotationAngle( ));
 
