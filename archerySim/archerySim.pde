@@ -3,7 +3,7 @@ Bow bow;
 
 void setup() {
   background (0);
-  size (2000, 800);
+  size (2000, 1000);
   arrow = new Arrow();
   bow = new Bow();
 }
